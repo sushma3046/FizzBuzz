@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $('#btnSubmit').on('click', function (e) {
+        var text = $('#txtValues').val();
+            GetResult(text);
+            return false;
+});
+
+});
+
+function GetResult(filter) {
+    $.ajax({
+    url: '/Home/GetFizzBuzz',
+    type: 'GET',
+    async : false,
+    data : {input : filter},
+    success:function (result) {
+    $('#fizzbuzzResult').html(result);
+    },
+    error :function (xhr) {
+    console.log('error : ' + xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+    }
+    });
+}
+
+</script>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form>
+        <div>
+        Please Enter Values to check FizzBuzz: <input type="text" id="txtValues" name="txtValues" title="txtValues" placeholder="txt"/>
+        <button type="submit" id="btnSubmit" name="btnSubmit" value="Submit">Submit</button>
+        </div>
+    </form>
+</div>
+<br /><br />
+<div id="fizzbuzzResult" class="text-center">
+    
+</div>

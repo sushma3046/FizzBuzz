@@ -1,0 +1,23 @@
+﻿@model IEnumerable<FizzBuzz.HelperClasses.fizzbuzzViewModel>  
+@{
+Layout=null;
+}
+<div>
+<table class="table table-bordered">  
+    <thead>  
+    <tr>  
+        <th>@Html.DisplayNameFor(m=>m.Value)</th>  
+        <th>@Html.DisplayNameFor(m=>m.Result)</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+    @foreach (var row in Model)  
+    {  
+        <tr>  
+            <td>@row.Value</td>  
+            <td><span style="white-space: pre-line">@row.Result</span></td>  
+        </tr>  
+    }  
+    </tbody>  
+</table>  
+</div>
